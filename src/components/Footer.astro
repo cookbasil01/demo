@@ -1,0 +1,193 @@
+---
+import { siteInfo } from '../data/site';
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <!-- CTA Final antes del footer real -->
+  <div class="footer-cta text-center">
+    <div class="container">
+      <h2 class="cta-title">¿Ya sabes qué se te antojó?</h2>
+      <p class="cta-subtitle">Haz tu pedido ahora y disfruta del mejor sabor en la comodidad de tu casa, o visítanos en Belén.</p>
+      <a href={siteInfo.contact.whatsappLink} class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+        ¡Pide por WhatsApp!
+      </a>
+    </div>
+  </div>
+  
+  <!-- Footer Main -->
+  <div class="footer-main">
+    <div class="container footer-grid">
+      
+      <div class="footer-brand">
+        <h3 class="footer-logo">{siteInfo.name}</h3>
+        <p class="brand-desc">{siteInfo.description}</p>
+        <div class="social-links">
+          <a href={siteInfo.social.instagram} target="_blank" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+          <a href={siteInfo.social.facebook} target="_blank" aria-label="Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          </a>
+          <a href={siteInfo.contact.whatsappLink} target="_blank" aria-label="WhatsApp">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          </a>
+        </div>
+      </div>
+      
+      <div class="footer-links">
+        <h4 class="footer-title">Enlaces Rápidos</h4>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#menu">Menú Rápido</a></li>
+          <li><a href="#destacados">Productos Destacados</a></li>
+          <li><a href="#galeria">Galería Visual</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-services">
+        <h4 class="footer-title">Servicios</h4>
+        <ul>
+          {siteInfo.services.map(service => (
+            <li>{service}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <div class="container text-center">
+      <p>&copy; {currentYear} {siteInfo.name}. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: var(--color-surface);
+  }
+  
+  .footer-cta {
+    background: linear-gradient(to right, #241300, #3E1E00);
+    padding: var(--spacing-lg) 0;
+    border-top: 1px solid rgba(242, 169, 0, 0.3);
+    border-bottom: 1px solid rgba(242, 169, 0, 0.3);
+  }
+  
+  .cta-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 1rem;
+    color: var(--color-text);
+  }
+  
+  .cta-subtitle {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-inline: auto;
+  }
+  
+  .footer-main {
+    padding: var(--spacing-lg) 0;
+  }
+  
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 3rem;
+  }
+  
+  .footer-logo {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+  
+  .brand-desc {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    max-width: 400px;
+  }
+  
+  .social-links {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .social-links a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--color-surface-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text);
+    transition: all 0.3s ease;
+  }
+  
+  .social-links a:hover {
+    background-color: var(--color-primary);
+    transform: translateY(-3px);
+  }
+  
+  .footer-title {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .footer-title::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background-color: var(--color-primary);
+  }
+  
+  .footer-links ul, .footer-services ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  
+  .footer-links a, .footer-services li {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-links a:hover {
+    color: var(--color-primary);
+  }
+  
+  .footer-bottom {
+    background-color: #050505;
+    padding: 1.5rem 0;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  
+  .footer-bottom p {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+  }
+  
+  @media (max-width: 768px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .brand-desc {
+      max-width: 100%;
+    }
+  }
+</style>

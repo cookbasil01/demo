@@ -1,0 +1,109 @@
+---
+import { reasonsToChooseUs } from '../data/site';
+---
+
+<section class="why-us">
+  <div class="container">
+    <div class="section-header text-center">
+      <span class="section-subtitle">El Diferencial</span>
+      <h2 class="section-title">¿Por Qué Elegirnos?</h2>
+    </div>
+    
+    <div class="reasons-grid">
+      {reasonsToChooseUs.map((reason, index) => (
+        <div class="reason-card">
+          <div class="reason-number">0{index + 1}</div>
+          <div class="reason-content">
+            <h3 class="reason-title">{reason.title}</h3>
+            <p class="reason-desc">{reason.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .why-us {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--color-bg);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .why-us::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(242,169,0,0.05) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  
+  .section-header {
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .reasons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+  
+  .reason-card {
+    background-color: var(--color-surface-light);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem 2rem;
+    position: relative;
+    border: 1px solid rgba(255,255,255,0.02);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .reason-card:hover {
+    transform: translateY(-10px);
+    background-color: var(--color-surface);
+    border-color: rgba(242,169,0,0.3);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+  }
+  
+  .reason-number {
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.05);
+    line-height: 1;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    transition: color 0.4s ease;
+  }
+  
+  .reason-card:hover .reason-number {
+    color: rgba(242,169,0,0.15);
+  }
+  
+  .reason-content {
+    position: relative;
+    z-index: 1;
+    margin-top: 2rem;
+  }
+  
+  .reason-title {
+    font-size: 1.5rem;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+  }
+  
+  .reason-desc {
+    color: var(--color-text-muted);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+</style>

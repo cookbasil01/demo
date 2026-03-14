@@ -1,0 +1,104 @@
+---
+// Gallery Images
+const galleryImages = [
+  { src: "/images/gallery-1.jpg", alt: "Nuestra parrilla en acción", class: "tall" },
+  { src: "/images/gallery-2.jpg", alt: "Hamburguesa doble carne", class: "wide" },
+  { src: "/images/gallery-3.jpg", alt: "Patacón mixto con todo", class: "" },
+  { src: "/images/gallery-4.jpg", alt: "Porción de papas a la francesa", class: "" },
+  { src: "/images/gallery-5.jpg", alt: "Costillas BBQ bañadas en salsa", class: "wide" },
+  { src: "/images/gallery-6.jpg", alt: "Ambiente Cherokees", class: "tall" },
+];
+---
+
+<section class="gallery" id="galeria">
+  <div class="container">
+    <div class="section-header text-center">
+      <span class="section-subtitle">Food Porn Real</span>
+      <h2 class="section-title">Galería Cherokees</h2>
+    </div>
+    
+    <div class="gallery-grid">
+      {galleryImages.map(img => (
+        <div class={`gallery-item ${img.class}`}>
+          <img src={img.src} alt={img.alt} loading="lazy" />
+          <div class="gallery-overlay">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .gallery {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--color-bg);
+  }
+  
+  .section-header {
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-auto-rows: 250px;
+    grid-auto-flow: dense;
+    gap: 1rem;
+  }
+  
+  .gallery-item {
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background-color: #222; /* Placeholder bg */
+  }
+  
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+  
+  .gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(242,169,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    color: var(--color-text);
+  }
+  
+  .gallery-item:hover img {
+    transform: scale(1.1);
+  }
+  
+  .gallery-item:hover .gallery-overlay {
+    opacity: 1;
+  }
+  
+  @media (min-width: 768px) {
+    .wide {
+      grid-column: span 2;
+    }
+    .tall {
+      grid-row: span 2;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .gallery-grid {
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: 200px;
+    }
+    .wide, .tall {
+      grid-column: span 2;
+      grid-row: span 1;
+    }
+  }
+</style>

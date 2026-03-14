@@ -1,0 +1,177 @@
+---
+import { menuCategories, siteInfo } from '../data/site';
+---
+
+<section class="menu-preview" id="menu">
+  <div class="container">
+    <div class="section-combo">
+      <div class="menu-content">
+        <span class="section-subtitle">Descubre Nuestro Sabor</span>
+        <h2 class="section-title">Menú Rápido</h2>
+        <p class="section-desc">Parrilla, hamburguesas y antojos diseñados para satisfacer el hambre más voraz. Todo preparado al instante.</p>
+        
+        <div class="menu-categories">
+          {menuCategories.map(category => (
+            <div class="menu-category">
+              <h3 class="category-name">{category.name}</h3>
+              <ul class="category-items">
+                {category.items.map(item => (
+                  <li class="category-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        
+        <div class="combo-notice">
+          <div class="notice-icon">🍟🥤</div>
+          <div class="notice-text">
+            <strong>¿Lo quieres en Combo?</strong>
+            <p>Agrega papas a la francesa y gaseosa personal a cualquier hamburguesa por solo $10.000 adicionales.</p>
+          </div>
+        </div>
+        
+        <div class="menu-actions">
+          <a href={siteInfo.contact.whatsappLink} class="btn btn-outline" target="_blank" rel="noopener noreferrer">
+            Solicitar Carta Completa
+          </a>
+        </div>
+      </div>
+      
+      <div class="menu-image">
+        <div class="image-wrapper">
+          <img src="/images/menu-preview.jpg" alt="Hamburguesas y Combos Cherokees" loading="lazy" />
+          <div class="image-accent"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .menu-preview {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--color-surface);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  
+  .section-combo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  
+  .section-desc {
+    color: var(--color-text-muted);
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    max-width: 90%;
+  }
+  
+  .menu-categories {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  .category-name {
+    color: var(--color-primary);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px dashed rgba(255,255,255,0.2);
+  }
+  
+  .category-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  
+  .category-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    color: var(--color-text);
+  }
+  
+  .combo-notice {
+    background: linear-gradient(to right, rgba(242, 169, 0, 0.1), transparent);
+    border-left: 4px solid var(--color-primary);
+    padding: 1.5rem;
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  .notice-icon {
+    font-size: 2rem;
+    line-height: 1;
+  }
+  
+  .notice-text strong {
+    display: block;
+    color: var(--color-primary);
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .notice-text p {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    margin: 0;
+  }
+  
+  .image-wrapper {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+  }
+  
+  .image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transform: scale(1.02);
+    transition: transform 0.5s ease;
+  }
+  
+  .image-wrapper:hover img {
+    transform: scale(1.05);
+  }
+  
+  .image-accent {
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius-lg);
+    pointer-events: none;
+  }
+  
+  @media (max-width: 992px) {
+    .section-combo {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    
+    .menu-image {
+      order: -1;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .menu-categories {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

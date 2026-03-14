@@ -1,0 +1,141 @@
+---
+import { featuredProducts } from '../data/site';
+---
+
+<section class="featured-products" id="destacados">
+  <div class="container">
+    <div class="section-header text-center">
+      <span class="section-subtitle">Lo Más Vendido</span>
+      <h2 class="section-title">Nuestras Estrellas</h2>
+      <p class="section-desc">Productos elaborados con ingredientes de primera calidad que te harán volver por más.</p>
+    </div>
+    
+    <div class="products-grid">
+      {featuredProducts.map((product) => (
+        <article class="product-card">
+          <div class="product-image-wrap">
+            <img src={product.image} alt={product.name} loading="lazy" class="product-image" />
+            {product.badge && <span class="badge">{product.badge}</span>}
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">{product.name}</h3>
+            <p class="product-desc">{product.description}</p>
+            <div class="product-footer">
+              <span class="product-price">{product.price}</span>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .featured-products {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--color-bg);
+  }
+  
+  .section-header {
+    max-width: 700px;
+    margin: 0 auto var(--spacing-lg);
+  }
+  
+  .section-desc {
+    color: var(--color-text-muted);
+    font-size: 1.1rem;
+  }
+  
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  
+  .product-card {
+    background-color: var(--color-surface);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.03);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+    border-color: rgba(255,255,255,0.1);
+  }
+  
+  .product-image-wrap {
+    position: relative;
+    padding-top: 66%; /* Aspect Ratio 3:2 */
+    overflow: hidden;
+    background-color: #222; /* Placeholder background */
+  }
+  
+  .product-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  
+  .product-card:hover .product-image {
+    transform: scale(1.05);
+  }
+  
+  .badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  }
+  
+  .product-info {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  
+  .product-name {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .product-desc {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+  }
+  
+  .product-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 1rem;
+  }
+  
+  .product-price {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+</style>

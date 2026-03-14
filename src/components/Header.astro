@@ -1,0 +1,124 @@
+---
+import { siteInfo } from '../data/site';
+---
+
+<header class="header">
+  <div class="container header-container">
+    <div class="logo-area">
+      <!-- Placeholder logo, they can replace with an actual img -->
+      <a href="/" class="logo-text">{siteInfo.name}</a>
+    </div>
+    
+    <nav class="nav-desktop">
+      <ul>
+        <li><a href="#menu">Nuestro Menú</a></li>
+        <li><a href="#destacados">Destacados</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#contacto">Ubicación</a></li>
+      </ul>
+    </nav>
+    
+    <div class="header-actions">
+      <a href={siteInfo.contact.whatsappLink} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+        Pedir Domicilio
+      </a>
+      <!-- Mobile menu toggle button placeholder -->
+      <button class="mobile-menu-btn" aria-label="Abrir menú">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<style>
+  .header {
+    background-color: rgba(13, 13, 13, 0.95);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+  }
+  
+  .logo-text {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .nav-desktop {
+    display: none;
+  }
+  
+  .nav-desktop ul {
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .nav-desktop a {
+    color: var(--color-text);
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-desktop a:hover {
+    color: var(--color-primary);
+  }
+  
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .mobile-menu-btn {
+    background: none;
+    border: none;
+    color: var(--color-text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  @media (min-width: 768px) {
+    .nav-desktop {
+      display: block;
+    }
+    .mobile-menu-btn {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  // Simple scroll effect for header
+  window.addEventListener('scroll', () => {
+    const header = document.querySelector('.header');
+    if (window.scrollY > 50) {
+      header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.5)';
+    } else {
+      header.style.boxShadow = 'none';
+    }
+  });
+</script>

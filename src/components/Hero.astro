@@ -1,0 +1,188 @@
+---
+import { siteInfo } from '../data/site';
+---
+
+<section class="hero" id="inicio">
+  <div class="hero-bg">
+    <img src="/images/hero-burger.jpg" alt="Hamburguesa premium asada a la parrilla" loading="eager" />
+    <div class="overlay"></div>
+  </div>
+  
+  <div class="container hero-container">
+    <div class="hero-content">
+      <div class="location-badge">📍 Belén, Medellín</div>
+      
+      <h1 class="hero-title">
+        Parrilla, hamburguesas y antojos <span class="text-primary">brutales</span>
+      </h1>
+      
+      <p class="hero-subtitle">
+        Disfruta carnes, costillas BBQ, patacones y burgers artesanales con sabor, calidad y porciones que sí valen la pena.
+      </p>
+      
+      <div class="hero-actions">
+        <a href={siteInfo.contact.whatsappLink} class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+          Pedir por WhatsApp
+        </a>
+        <a href="#menu" class="btn btn-outline">
+          Ver Carta
+        </a>
+      </div>
+      
+      <div class="hero-trust">
+        <div class="trust-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="star"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+          <span>4.6 <small>(+500 reseñas)</small></span>
+        </div>
+        <div class="trust-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <span>12:00 PM - 10:00 PM</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 80px; /* offset header */
+  }
+  
+  .hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+  
+  .hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(13,13,13,0.95) 0%, rgba(13,13,13,0.7) 50%, rgba(13,13,13,0.4) 100%);
+  }
+  
+  .hero-container {
+    width: 100%;
+    z-index: 1;
+  }
+  
+  .hero-content {
+    max-width: 650px;
+    animation: fadeInUp 1s ease-out;
+  }
+  
+  .location-badge {
+    display: inline-block;
+    background-color: var(--color-surface-light);
+    color: var(--color-text);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  .hero-title {
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 4px 10px rgba(0,0,0,0.5);
+  }
+  
+  .hero-title .text-primary {
+    color: var(--color-primary);
+    text-shadow: 0 0 20px rgba(242, 169, 0, 0.3);
+  }
+  
+  .hero-subtitle {
+    font-size: clamp(1.1rem, 3vw, 1.3rem);
+    color: var(--color-text);
+    margin-bottom: 2.5rem;
+    max-width: 550px;
+    text-shadow: 1px 2px 4px rgba(0,0,0,0.8);
+  }
+  
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+  
+  .hero-trust {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 1.5rem;
+  }
+  
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+  
+  .trust-item .star {
+    color: var(--color-primary);
+  }
+  
+  .trust-item small {
+    color: var(--color-text-muted);
+    font-weight: 400;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .overlay {
+      background: linear-gradient(to bottom, rgba(13,13,13,0.8) 0%, rgba(13,13,13,0.9) 100%);
+    }
+    
+    .hero-content {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .hero-actions {
+      justify-content: center;
+      width: 100%;
+    }
+    
+    .hero-actions .btn {
+      width: 100%;
+    }
+    
+    .hero-trust {
+      justify-content: center;
+    }
+  }
+</style>
